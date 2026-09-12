@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation';
 import { toast } from "react-toastify";
 import { useAuth } from '@/app/context/AuthContext'
 
-export default function DeleteButton( {cardID} ) {
+export default function DeleteButton( {cardID}: {cardID: string} ) {
 
     const { isLoggedIn } = useAuth();
     const { user } = useAuth();

@@ -19,7 +19,7 @@ export default function AddCardView() {
 
     const router = useRouter()
 
-    const handleChange = (e) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
         setFormData((prevData) => ({
         ...prevData,
@@ -27,7 +27,7 @@ export default function AddCardView() {
         }));
     };
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = async (e: React.ChangeEvent<HTMLFormElement>) => {
         e.preventDefault();
 
         try {

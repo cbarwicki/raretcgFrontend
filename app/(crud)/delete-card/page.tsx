@@ -6,12 +6,12 @@ export default function DeleteCardView() {
 
     const [cardID, setCardID] = useState(0);
 
-    const handleChange = (e) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { value } = e.target;
-        setCardID(value)
+        setCardID(Number(value))
     };
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = async (e: React.ChangeEvent<HTMLFormElement>) => {
         e.preventDefault();
 
         try {

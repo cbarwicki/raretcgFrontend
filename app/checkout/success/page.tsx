@@ -1,7 +1,8 @@
 "use client";
 import { useSearchParams } from "next/navigation";
+import { Suspense } from "react";
 
-export default function CheckoutSuccessPage() {
+function CheckoutSuccessContent() {
 
     const searchParams = useSearchParams();
     const orderId = searchParams.get("order_id");
@@ -15,5 +16,13 @@ export default function CheckoutSuccessPage() {
                 <a href="/" className="text-blue-500 hover:underline">Return to Home</a>
             </div>
         </div>
+    );
+}
+
+export default function CheckoutSuccessPage() {
+    return (
+        <Suspense fallback={<div>Loading...</div>}>
+            <CheckoutSuccessContent />
+        </Suspense>
     );
 }

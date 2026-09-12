@@ -32,6 +32,7 @@ type CartItem = {
 export default function CartView () {
 
     const { user } = useAuth();
+    const { isLoggedIn } = useAuth();
 
     const [cart, setCart] = useState<CartItem[]>([])
     // const [userInfo, setUserInfo] = useState<UserInfo | null>(null)
@@ -63,7 +64,7 @@ export default function CartView () {
     }, [trigger])
 
     const handleDelete = async (cardId: number) => {
-        if (!user.userId) return;
+        if (!isLoggedIn || !user?.userId) return;
         const response = await axios.delete(`${process.env.NEXT_PUBLIC_API_URL}/api/cart/${user.userId}/${cardId}`)
         console.log("Response:", response.data.message)
         console.log(`${cardId} removed from cart`)
@@ -77,7 +78,7 @@ export default function CartView () {
 
         const response = await axios.post(
             `${process.env.NEXT_PUBLIC_API_URL}/api/checkout/create-checkout-session`,
-            { cart, userId: user.userId },
+            { cart, userId: user?.userId },
             // {
             // headers: {
             //     Authorization: `Bearer ${localStorage.getItem("token")}`,

@@ -49,7 +49,7 @@ export default function AddToCart({ cardID }: AddToCartProps) {
 
         try {
             const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/users/add-to-cart`, {
-                userId: user.userId,
+                userId: user?.userId,
                 cardId: cardID,
                 quantity: quantity
             })

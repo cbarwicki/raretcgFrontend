@@ -11,11 +11,11 @@ export default function LoginForm() {
 
   const router = useRouter();
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
     setMessage('');
@@ -28,7 +28,7 @@ export default function LoginForm() {
       toast.success("Account created successfully!");
       router.push('/login')
 
-    } catch (err) {
+    } catch (err: any) {
       console.log("an error occurred")
       if (err.response.data){
         setMessage(err.response.data.message)

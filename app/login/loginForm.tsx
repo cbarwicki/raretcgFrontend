@@ -27,15 +27,15 @@ export default function LoginForm() {
   //   fetchMe();
   // }, []);
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSignup = (e) => {
+  const handleSignup = (e: React.MouseEvent<HTMLButtonElement>) => {
     router.push(`/signup`);
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
     setMessage('');
@@ -57,9 +57,9 @@ export default function LoginForm() {
       console.log(`User ID: ${user?.userId}`)
       router.push('/all-cards')
 
-      if (!res.ok) throw new Error(data.error || 'Login failed');
+      // if (!res.ok) throw new Error(data.error || 'Login failed');
 
-    } catch (err) {
+    } catch (err: any) {
       setMessage(err.response.data.message);
     } finally {
       setLoading(false);

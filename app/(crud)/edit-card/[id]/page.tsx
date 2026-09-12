@@ -6,8 +6,8 @@ import { useRouter } from 'next/navigation';
 import { toast } from "react-toastify";
 
 type Card = {
-    _id: string;
     id: string;
+    card_id: string;
     name: string;
     supertype: string;
     set_name: string;
@@ -63,7 +63,7 @@ export default function EditCardView() {
         imgLarge: '',
     });
 
-    const handleChange = (e) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
         setFormData((prevData) => ({
         ...prevData,
@@ -71,7 +71,7 @@ export default function EditCardView() {
         }));
     };
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = async (e: React.ChangeEvent<HTMLFormElement>) => {
         e.preventDefault();
 
         try {

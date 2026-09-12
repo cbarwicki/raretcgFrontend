@@ -2,7 +2,7 @@
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/app/context/AuthContext'
 
-export default function EditButton( {cardID} ) {
+export default function EditButton( {cardID}: {cardID: string} ) {
 
     const router = useRouter();
     const { isLoggedIn } = useAuth();
